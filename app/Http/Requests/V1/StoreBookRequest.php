@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\V1;
 
+use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreBookRequest extends FormRequest
@@ -24,7 +25,7 @@ class StoreBookRequest extends FormRequest
     public function rules()
     {
         return [
-            'isbn' => ['required', Rule::in('I')],
+            'isbn' => ['required', 'regex:/[0-9][0-9][0-9]-[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]/'],
             'title' => ['required'],
             'author' => ['required'],
             'category' => ['required'],
